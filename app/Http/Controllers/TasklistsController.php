@@ -71,8 +71,8 @@ class TasklistsController extends Controller
      */
     public function edit($id)
     {$tasklist =Tasklist::find($id);
-    return view('messages.edit',[
-         'message' => $message,]);
+    return view('tasaklists.edit',[
+         'tasklist' => $tasklist,]);
          }
 
     /**
@@ -86,7 +86,7 @@ class TasklistsController extends Controller
     { 
       $tasklist= Tasklist::find($id);
       $tasklist->content = $request ->content;
-      $message ->save();
+      $tasklist ->save();
        return redirect('/');
     }
 
