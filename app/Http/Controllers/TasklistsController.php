@@ -42,7 +42,10 @@ class TasklistsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { $tasklist= new Tasklist;
+    { $this->validate(request,[
+         'status'=>'required|max:191',]);
+        
+      $tasklist= new Tasklist;
       $tasklist->content = $request->content;
       $tasklist->save();
       return redirect('/');
@@ -70,7 +73,7 @@ class TasklistsController extends Controller
      */
     public function edit($id)
     {$tasklist =Tasklist::find($id);
-    return view('tasklists.edit',[
+    return view('tasaklists.edit',[
          'tasklist' => $tasklist,]);
          }
 
@@ -82,7 +85,8 @@ class TasklistsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { 
+    { $this->validate(request,[
+         'status'=>'required|max:191',]);
       $tasklist= Tasklist::find($id);
       $tasklist->content = $request ->content;
       $tasklist ->save();
