@@ -3,7 +3,10 @@
 @section('content')
 
     <h1>タスク新規作成ページ</h1>
-
+<div class="row">
+        <div class="col-xs-12">
+        <div class="col-sm-offset-2 col-sm-8">
+        <div class="col-lg-offset-3 col-lg-6">
     {!! Form::model($tasklist, ['route' => 'tasklists.store']) !!}
     <div class="form-group">
         {!! Form::label('status', 'ステータス:') !!}
@@ -17,5 +20,9 @@
         {!! Form::submit('投稿',['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
+    </div>
+    </div>
+    </div>
+ </div>
 
 @endsection

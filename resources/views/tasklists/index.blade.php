@@ -5,7 +5,7 @@
     <h1>タスク一覧</h1>
 
     @if (count($tasklists) > 0)
-    <table class="table table-striped">
+    <table class="table table-striped ">
             <thead>
                 <tr>
                     <th>id</th>
