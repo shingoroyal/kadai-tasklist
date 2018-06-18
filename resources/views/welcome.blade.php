@@ -2,7 +2,8 @@
 
 @section('content')
      @if (Auth::check())
-       {!! link_to_route('tasklists.index', 'タスク一覧へ', null, ['class' => 'btn btn-lg btn-standard']) !!}
+       <?php $user = Auth::user(); ?>
+        {{ $user->name }}
     @else
     <div class="center jumbotron">
         <div class="text-center">
