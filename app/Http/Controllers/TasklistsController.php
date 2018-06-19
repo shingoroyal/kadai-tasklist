@@ -59,7 +59,7 @@ class TasklistsController extends Controller
             'content' => $request->content,
         ]);
 
-        return redirect()->back();
+        return redirect('/');
       
     }
 
