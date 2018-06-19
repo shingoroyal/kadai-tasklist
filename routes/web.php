@@ -13,7 +13,7 @@
 
 
 
-Route::resource('tasklists', 'TasklistsController');
+
 Route::get('/','TasklistsController@index');
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
