@@ -70,10 +70,11 @@ class TasklistsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-       $tasklist = Tasklist::find($id);
+    {  $tasklist = Tasklist::find($id); 
+        if (\Auth::id() === $tasklist->user_id){
        return view('tasklists.show',[
-           'tasklist' => $tasklist,]);
+           'tasklist' => $tasklist]);}
+           else return redirect('/');
     }
 
     /**
@@ -83,9 +84,10 @@ class TasklistsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {$tasklist =Tasklist::find($id);
-    return view('tasklists.edit',[
-         'tasklist' => $tasklist,]);
+    { $tasklist = Tasklist::find($id); 
+        if (\Auth::id() === $tasklist->user_id)
+   { return view('tasklists.edit',[
+         'tasklist' => $tasklist,]);}
          }
 
     /**
@@ -113,10 +115,13 @@ class TasklistsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    { $tasklist = Tasklist::find($id);
-        $tasklist->delete();
-
+    { 
+        $tasklist = Tasklist::find($id); 
+        if (\Auth::id() === $tasklist->user_id) {
+            $tasklist->delete();
+        }
+        
         return redirect('/');
-        //
+        
     }
 }
