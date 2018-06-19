@@ -54,11 +54,12 @@ class TasklistsController extends Controller
          'status' => 'required|max:10',
          'content'=>'required|max:191',]);
         
-      $tasklist= new Tasklist;
-      $tasklist->status = $request->status;
-      $tasklist->content = $request->content;
-      $tasklist->save();
-      return redirect('/');
+      $request->user()->tasklists()->create([
+            'status' => $request->status,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->back();
       
     }
 
